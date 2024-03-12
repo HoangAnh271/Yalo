@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Conversation from "./Conversation";
 import ConversationV2 from "./ConversationV2";
 
-const TabMessage = (props) => {
+const MessageTab = (props) => {
   useEffect(() => {
     let element = document.getElementsByClassName("cvr-scrollbar-view")[0];
     element.addEventListener("scroll", () => {
@@ -25,6 +25,17 @@ const TabMessage = (props) => {
       )[0];
       scrollBar.classList.replace("opacity-[1]", "opacity-0");
     });
+    const searchInput = document.getElementById("search-input");
+    searchInput.addEventListener("keydown", (event) => {
+      const placeholder = document.getElementById("search-plhd");
+      if (event.key.length > 1) {
+        if (searchInput.value.length <= 1) {
+          placeholder.style.visibility = "visible";
+        }
+      } else {
+        placeholder.style.visibility = "hidden";
+      }
+    });
   }, []);
   return (
     <div className="bg-white-100 flex h-screen w-[353px] border-r border-[#d6dbe1]">
@@ -35,8 +46,16 @@ const TabMessage = (props) => {
               className="absolute top-4 mx-3 my-2 h-4 w-4 "
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png"
             ></img>
-            <span className="absolute left-[120px] text-[#7589a3]">Search</span>
-            <input className="h-8 w-60 rounded-md bg-[#eaedf0] px-10" />
+            <span
+              id="search-plhd"
+              className="absolute left-[120px] text-[#7589a3]"
+            >
+              Search
+            </span>
+            <input
+              id="search-input"
+              className="h-8 w-60 rounded-md bg-[#eaedf0] px-10 outline-none focus:border focus:border-[#0068ff]"
+            />
           </div>
           <div className="flex flex-col justify-center">
             <button className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-[#eaedf0]">
@@ -208,4 +227,4 @@ const TabMessage = (props) => {
   );
 };
 
-export default TabMessage;
+export default MessageTab;

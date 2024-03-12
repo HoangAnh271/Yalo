@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-function SideNav() {
+function MainTab() {
   useEffect(() => {
     const linkItems = document.querySelectorAll(".link-item");
     linkItems.forEach((linkItem, index) => {
@@ -22,16 +22,7 @@ function SideNav() {
     if (element) {
       element.classList.remove("collapse");
       element.classList.add("visible");
-      const avatar = document.getElementById("avatar");
-      avatar.focus();
-    }
-  };
-
-  const handleImageOnBlur = () => {
-    const element = document.getElementById("profile-modal");
-    if (element) {
-      element.classList.remove("visible");
-      element.classList.add("collapse");
+      element.focus();
     }
   };
   return (
@@ -46,7 +37,6 @@ function SideNav() {
               src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png"
               onMouseDown={handleImageMouseDown}
               onMouseUp={handleImageMouseUp}
-              onBlur={handleImageOnBlur}
             />
           </div>
           <div className="flex w-16 flex-col justify-start text-center">
@@ -179,4 +169,4 @@ function SideNav() {
   );
 }
 
-export default SideNav;
+export default MainTab;

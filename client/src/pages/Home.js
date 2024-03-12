@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import SideNav from "../components/SideNav";
 import Chat from "../components/Chat";
-import TabMessage from "../components/TabMessage";
 import ProfileModal from "../components/ProfileModal";
+import SidebarNav from "../components/SidebarNav";
 
 const Home = (props) => {
   useEffect(() => {
@@ -65,9 +64,8 @@ const Home = (props) => {
   }, []);
   return (
     <div>
-      <div className="flex flex-row h-screen">
-        <SideNav />
-        <TabMessage />
+      <div className="flex h-screen">
+        <SidebarNav/>
         <Chat />
       </div>
       <ProfileModal />
